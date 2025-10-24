@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Amina Water — Humanity Fund</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Algorand SDK (browser UMD) -->
+  <script src="https://unpkg.com/algosdk/dist/browser/algosdk.min.js"></script>
+  <!-- Pera Wallet Connect (browser UMD) -->
+  <script src="https://unpkg.com/@perawallet/connect/dist/browser/pera-wallet-connect.umd.min.js"></script>
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <h1 class="brand">Amina Water</h1>
+      <p class="sub">A dignity-first <b>humanity fund</b> using crypto to bring clean water to people in need.</p>
+      <div class="chip">Amina Coin (ASA <span id="asaId">1107424865</span>)</div>
+    </header>
+
+    <section class="controls">
+      <button id="connectBtn">Connect Pera Wallet</button>
+      <button id="refreshBtn" class="ghost">Refresh</button>
+    </section>
+
+    <section class="kpis">
+      <div class="kpi">
+        <div class="label">Total swaps (POC)</div>
+        <div class="value" id="totalSwaps">–</div>
+      </div>
+      <div class="kpi">
+        <div class="label">Donations so far</div>
+        <div class="value" id="donations">$0</div>
+      </div>
+      <div class="kpi">
+        <div class="label">To next $100</div>
+        <div class="value" id="toNext">–</div>
+      </div>
+    </section>
+
+    <div class="wave"></div>
+
+    <section class="progressBlock card">
+      <div class="row">
+        <div class="note">Progress to next donation (every 1,000 swaps ⇒ $100)</div>
+        <div class="note" id="pct">0%</div>
+      </div>
+      <div class="progress"><div class="bar" id="bar"></div></div>
+      <p class="tiny">
+        Proof-of-concept: we count Amina transfers touching the Tinyman Amina/ALGO pool address.
+        For production, we can switch to exact DEX swap detection.
+      </p>
+    </section>
+
+    <section class="donate card">
+      <h2>Support the humanity fund</h2>
+      <p class="note">Donate in ALGO or USDC (Algorand). Your wallet builds and signs the transaction. Funds go to the dedicated Amina Water account below.</p>
+
+      <div class="addrRow">
+        <span class="addrLabel">Fund address</span>
+        <code id="donationAddr">PZBPPJUHZ3UMENQHZO2HJKPCPTCYCAWY4FPW44XBOKSYIKPILJN76WMIBA</code>
+        <button id="copyAddr" class="ghost sm">Copy</button>
+      </div>
+
+      <div class="donateRow">
+        <label class="stack">
+          <span class="label">Asset</span>
+          <select id="assetSelect">
+            <option value="ALGO">ALGO</option>
+            <option value="USDC">USDC (Algorand)</option>
+          </select>
+        </label>
+        <label class="stack">
+          <span class="label">Amount</span>
+          <input id="donateAmt" type="number" step="0.01" min="0.01" placeholder="1.00" />
+        </label>
+        <button id="donateBtn">Donate with Pera</button>
+      </div>
+
+      <ul class="bullets tiny">
+        <li>USDC ASA: <b>31566704</b> (Algorand mainnet)</li>
+        <li>No personal names are shown here; the aim is simple — dignified access to clean water.</li>
+      </ul>
+    </section>
+
+    <section class="about card">
+      <h2>How this works</h2>
+      <ul class="bullets">
+        <li><b>Connect</b> your wallet (Pera). Keys never touch this site.</li>
+        <li>We query a public <b>Indexer</b> to count Amina transfers involving the Amina/ALGO <b>Tinyman pool</b>.</li>
+        <li>Each <b>1,000 swaps</b> unlocks a <b>$100 donation</b> from the Amina Water humanity fund.</li>
+      </ul>
+    </section>
+
+    <footer class="foot tiny">
+      Built for Amina Water • Proof-of-concept
+    </footer>
+  </main>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
