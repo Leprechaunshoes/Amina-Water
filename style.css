@@ -1,0 +1,116 @@
+:root{
+  --bg:#071426;          /* deep ocean */
+  --bg2:#0b2140;         /* mid ocean */
+  --card:#0e223f;        /* dark water card */
+  --ink:#eaf6ff;         /* light text */
+  --muted:#a8c6e6;       /* soft blue text */
+  --accent:#3bb9ff;      /* aqua */
+  --accent2:#4ee0ff;     /* bright aqua */
+  --line:rgba(255,255,255,.12);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 800px at 20% -10%, #0b2e57 0%, var(--bg) 60%),
+    linear-gradient(180deg, rgba(59,185,255,.10), transparent 30%),
+    var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+.wrap{width:100%; max-width:980px; margin:32px auto; padding:24px}
+
+.header .brand{
+  margin:0 0 6px;
+  font-size:34px;
+  letter-spacing:.3px;
+  background:linear-gradient(90deg, #b7e5ff, var(--accent2));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow: 0 6px 30px rgba(78,224,255,.25);
+}
+.sub{margin:0 0 14px;color:var(--muted)}
+.chip{
+  display:inline-block; padding:6px 10px; border:1px solid var(--line);
+  border-radius:999px; font-size:12px; color:var(--muted);
+  background:rgba(255,255,255,.04);
+}
+
+.controls{display:flex; gap:10px; align-items:center; margin:18px 0 8px}
+button{
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  color:#062033; font-weight:700; border:0; border-radius:999px; padding:10px 16px; cursor:pointer;
+}
+button.ghost{background:transparent; color:var(--ink); border:1px solid var(--line)}
+button.sm{padding:6px 10px; font-size:12px}
+button:disabled{opacity:.6; cursor:default}
+
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:10px 0 18px}
+.kpi{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:12px; padding:14px;
+}
+.label{color:var(--muted); font-size:12px}
+.value{font-size:22px; font-weight:800; margin-top:2px}
+
+.wave{
+  height:32px; margin:6px 0 4px;
+  background:
+    radial-gradient(12px 6px at 12px 12px, rgba(78,224,255,.45) 40%, transparent 41%) repeat-x,
+    radial-gradient(12px 6px at 0px 20px, rgba(59,185,255,.35) 40%, transparent 41%) repeat-x;
+  background-size:24px 24px, 24px 24px;
+  opacity:.5;
+}
+
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.04), transparent 14px), var(--card);
+  border:1px solid var(--line); border-radius:12px; padding:16px; margin:14px 0;
+}
+
+.row{display:flex; justify-content:space-between; align-items:center}
+.note{color:var(--muted); font-size:13px}
+
+.progress{
+  height:16px; border:1px solid var(--line); border-radius:999px; overflow:hidden;
+  background:rgba(255,255,255,.05)
+}
+.bar{
+  height:100%; width:0%;
+  background:linear-gradient(90deg, #2ea8ff, #5bf0ff);
+  box-shadow: 0 0 18px rgba(91,240,255,.55) inset;
+  transition:width .8s cubic-bezier(.2,.8,.2,1)
+}
+
+.addrRow{
+  display:grid; grid-template-columns: 125px 1fr auto; gap:10px; align-items:center;
+  margin:10px 0 6px;
+}
+.addrLabel{color:var(--muted); font-size:12px}
+code{
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background:rgba(255,255,255,.06); padding:6px 8px; border-radius:8px; word-break:break-all; border:1px solid var(--line)
+}
+
+.donateRow{display:grid; grid-template-columns: 160px 1fr auto; gap:12px; align-items:end; margin-top:10px}
+.stack{display:flex; flex-direction:column; gap:6px}
+input, select{
+  width:100%; padding:10px 12px; border-radius:10px; border:1px solid var(--line);
+  background:rgba(255,255,255,.04); color:var(--ink); outline:none;
+}
+input:focus, select:focus{border-color:rgba(255,255,255,.2)}
+
+h2{margin:0 0 8px}
+ul.bullets{margin:6px 0 0 18px; color:var(--muted)}
+ul.bullets b{color:var(--ink)}
+
+.tiny{color:var(--muted); font-size:12px}
+.foot{margin-top:20px; text-align:center; opacity:.8}
+
+@media (max-width:760px){
+  .kpis{grid-template-columns:1fr}
+  .addrRow{grid-template-columns:1fr auto}
+  .donateRow{grid-template-columns:1fr; align-items:stretch}
+}
